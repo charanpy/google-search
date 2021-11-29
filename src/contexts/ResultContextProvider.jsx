@@ -8,6 +8,7 @@ const ResultContextProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('React');
 
   const getResults = async (type) => {
+    console.log(type);
     setIsLoading(true);
 
     const response = await fetch(`${baseUrl}${type}`, {
@@ -22,6 +23,7 @@ const ResultContextProvider = ({ children }) => {
 
     const data = await response.json();
 
+    console.log(data);
     if (type.includes('/news')) {
       setResults(data.entries);
     } else if (type.includes('/images')) {
